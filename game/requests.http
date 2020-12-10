@@ -1,0 +1,49 @@
+
+#vrat existujuce roomky v stave lobby
+GET http://localhost:8000/game/
+
+###
+#vytvor novu roomku(name=meno_tvorcu)
+POST http://localhost:8000/game/
+Content-Type: application/json
+
+{
+    "name": "player23"
+}
+
+###
+#vrat aktualny stav hry(id_hry)
+GET http://localhost:8000/game/25/
+
+###
+#pridaj 2. hraca do roomky a zacni hru(id_hry, name=meno_druheho_hraca)
+POST http://localhost:8000/game/25/
+Content-Type: application/json
+
+{
+    "name": "player17"
+}
+
+###
+#ukonci hru(id_hry)
+DELETE http://localhost:8000/game/21/
+
+###
+#tah(id_hry, tah="xyz" => x=hrac[w,b] y=[a-h] z=[1-8])
+POST http://localhost:8000/game/24/click/
+Content-Type: application/json
+
+{
+    "tah": "bh6"
+}
+
+###
+#ukaz kam sa mozem pohnut(id_hry, x_pos=stlpec, y_pos=riadok)
+POST http://localhost:8000/game/21/finish/
+Content-Type: application/json
+
+{
+    "state": 0
+}
+
+###
